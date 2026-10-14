@@ -1,0 +1,29 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/*.tmp
+.DS_Store
+Thumbs.db
+*.log
+
+# Originals must never reach the public repo: they carry full metadata, GPS included.
+# Images dropped into the project root are ignored for that reason.
+/*.jpg
+/*.jpeg
+/*.JPG
+/*.JPEG
+/*.png
+/*.tif
+/*.tiff
+/*.heic
+/*.HEIC
+
+# Drafts: photos uploaded but not yet published. Neither their images nor their texts may reach
+# the public repo; Publish runs `git add -A`, so this is what keeps them out.
+drafts/
+data/drafts.json
+data/drafts.json.tmp
+
+# Demo gallery from `npm run demo`
+demo-data/

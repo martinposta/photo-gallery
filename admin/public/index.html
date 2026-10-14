@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery · admin</title>
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">Gallery <span>admin</span></div>
+    <div class="top-right">
+      <span class="save-state" id="save-state"></span>
+      <span class="git-state" id="git-state"></span>
+      <span class="repo-size" id="repo-size"></span>
+      <span class="sync-state" id="sync-state"></span>
+      <a class="btn ghost" href="/preview/" target="gallery-preview">Site preview ↗</a>
+      <button class="btn confirm" id="confirm-btn" hidden title="Publishes all drafts. They go to GitHub with the Publish button.">Confirm new photos (<span id="n-confirm">0</span>)</button>
+      <button class="btn primary" id="publish-btn">Publish to GitHub</button>
+      <div class="menu-wrap">
+        <button class="btn" id="git-menu-btn" title="More GitHub actions" aria-haspopup="true" aria-expanded="false">⋯</button>
+        <div class="menu-panel" id="git-menu" hidden>
+          <button data-act="pull">↓ Pull from GitHub</button>
+          <button data-act="discard" class="danger">Discard my changes…</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side">
+      <button class="side-item" data-filter="settings" id="nav-settings">
+        <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"/></svg>
+        Profile & settings
+      </button>
+      <div class="side-title">Photos</div>
+      <button class="side-item" data-filter="all">All <span class="n" id="n-all"></span></button>
+      <button class="side-item" data-filter="none">No collection <span class="n" id="n-none"></span></button>
+      <button class="side-item" data-filter="drafts">Drafts <span class="n" id="n-drafts"></span></button>
+      <div class="side-title">
+        Collections
+        <button class="mini" id="add-collection" title="New collection">+ new</button>
+      </div>
+      <div id="coll-list"></div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="main-head">
+        <div>
+          <h1 id="view-title">All photos</h1>
+          <div class="sub" id="view-sub"></div>
+          <div class="order-state" id="order-state"></div>
+        </div>
+        <div class="main-actions">
+          <button class="btn ghost small" id="edit-collection" hidden>Edit collection</button>
+          <button class="btn ghost small" id="select-all">Select all</button>
+        </div>
+      </div>
+
+      <label class="drop" id="drop">
+        <input type="file" id="file-input" multiple accept=".jpg,.jpeg,.png,.webp,.tif,.tiff,image/*" hidden>
+        <svg viewBox="0 0 24 24"><path d="M11 16V7.8l-3.6 3.6L6 10l6-6 6 6-1.4 1.4L13 7.8V16h-2Zm-6 4v-5h2v3h10v-3h2v5H5Z"/></svg>
+        <div>
+          <b>Drop photos here</b> or click to choose
+          <div class="sub" id="drop-hint">JPG, PNG, WebP, TIFF · originals stay with you, only resized copies go online</div>
+        </div>
+      </label>
+      <div class="queue" id="queue" hidden></div>
+
+      <div class="thumbs" id="thumbs"></div>
+      <p class="empty" id="empty" hidden></p>
+    </main>
+
+    <aside class="panel" id="panel"></aside>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box">
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/admin.js"></script>
+</body>
+</html>

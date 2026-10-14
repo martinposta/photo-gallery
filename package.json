@@ -1,0 +1,22 @@
+{
+  "name": "photo-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A self-hosted photo gallery: static site for GitHub Pages, managed from a local admin",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "admin": "node admin/server.mjs",
+    "rebuild": "node lib/cli-rebuild.mjs",
+    "demo": "node scripts/demo.mjs",
+    "admin:demo": "node scripts/admin-demo.mjs",
+    "test": "node --test tests/gallery.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "dependencies": {
+    "exifr": "^7.1.3",
+    "sharp": "^0.35.5"
+  }
+}
